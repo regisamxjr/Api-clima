@@ -3,29 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Weather Controller</title>
 </head>
 <body>
-   
     <main class="container">
-        <section id="busca">
-            <form class="busca">
-                <input type="text" name="cidade" id="cidade" placeholder="Digite o nome da cidade">
-                <i class="fa fa-search"></i>
+        <header>
+            <h1>Weather Controller</h1>
+        </header>
+
+        <section id="busca" class="search-section">
+            <form class="busca" id="searchForm">
+                <input type="text" name="cidade" id="cidade" placeholder="Digite o nome da cidade" class="search-input" required>
+                <button type="submit" class="search-button">
+                    <i class="fa fa-search"></i>
+                </button>
             </form>
         </section>
 
-        <section id="resultado">
+        <section id="resultado" class="result-section">
             <div class="cidade">
                 <h2 class="cidade-nome" id="cidadeNome"></h2>
-                <h3 class = "detalhes" id="descricao"></h3>
-                <h3 class="cidade-temperatura" id="cidadeTemperatura"></h3>
-                <h3 class="cidade-vento" id="cidadeVento"></h3>
-                <h3 class="cidade-umidade" id="cidadeUmidade"></h3>
+                <p class="detalhes" id="descricao"></p>
+                <p class="cidade-temperatura" id="cidadeTemperatura"></p>
+                <p class="cidade-vento" id="cidadeVento"></p>
+                <p class="cidade-umidade" id="cidadeUmidade"></p>
             </div>
         </section>
-
     </main>
-    
 </body>
 </html>
