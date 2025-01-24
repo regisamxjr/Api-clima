@@ -14,22 +14,28 @@
             <h1>Weather Controller</h1>
         </header>
 
-        <section id="busca" class="search-section">
+        <section class="search-section">
             <form class="busca" id="searchForm">
-                <input type="text" name="cidade" id="cidade" placeholder="Digite o nome da cidade" class="search-input" required>
+                <input 
+                    type="text" 
+                    name="cidade" 
+                    id="cidade" 
+                    placeholder="Digite o nome da cidade" 
+                    class="search-input" 
+                    required>
                 <button type="submit" class="search-button">
                     <i class="fa fa-search"></i>
                 </button>
             </form>
         </section>
 
-        <section id="resultado" class="result-section">
+        <section class="result-section">
             <div class="cidade">
-                <h2 class="cidade-nome" id="cidadeNome"></h2>
-                <p class="detalhes" id="descricao"></p>
-                <p class="cidade-temperatura" id="cidadeTemperatura"></p>
-                <p class="cidade-vento" id="cidadeVento"></p>
-                <p class="cidade-umidade" id="cidadeUmidade"></p>
+                <h2 class="cidade-nome" id="cidadeNome">Nome da Cidade</h2>
+                <p class="detalhes" id="descricao">Descrição do clima</p>
+                <p class="cidade-temperatura" id="cidadeTemperatura">Temperatura: --°C</p>
+                <p class="cidade-vento" id="cidadeVento">Vento: -- m/s</p>
+                <p class="cidade-umidade" id="cidadeUmidade">Umidade: --%</p>
             </div>
         </section>
     </main>

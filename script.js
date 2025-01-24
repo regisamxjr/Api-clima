@@ -1,6 +1,5 @@
-const apiKey = "628a3457bcc040d59f204705241412"; // Substitua pela sua API Key
+const apiKey = "628a3457bcc040d59f204705241412";
 
-// Selecionando elementos do DOM
 const form = document.getElementById("searchForm");
 const cidadeInput = document.getElementById("cidade");
 const cidadeNome = document.getElementById("cidadeNome");
@@ -10,7 +9,6 @@ const cidadeVento = document.getElementById("cidadeVento");
 const cidadeUmidade = document.getElementById("cidadeUmidade");
 const body = document.body;
 
-// Função para obter o clima de uma cidade
 async function getWeather(cidade) {
     try {
         const response = await fetch(
@@ -18,26 +16,23 @@ async function getWeather(cidade) {
         );
         
         if (!response.ok) {
-            throw new Error("Cidade não encontrada.");
+            throw new Error("Cidade não encontrada. Verifique o nome digitado.");
         }
 
         const data = await response.json();
 
-        // Atualizando o DOM com as informações obtidas
         cidadeNome.textContent = `${data.name}, ${data.sys.country}`;
         descricao.textContent = data.weather[0].description;
         cidadeTemperatura.textContent = `Temperatura: ${data.main.temp}°C`;
         cidadeVento.textContent = `Vento: ${data.wind.speed} m/s`;
         cidadeUmidade.textContent = `Umidade: ${data.main.humidity}%`;
 
-        // Atualizando o background com base no clima
         updateBackground(data.weather[0].main);
     } catch (error) {
         alert(error.message);
     }
 }
 
-// Função para alterar o background de acordo com o clima
 function updateBackground(clima) {
     switch (clima.toLowerCase()) {
         case "clear":
@@ -58,7 +53,6 @@ function updateBackground(clima) {
     body.style.backgroundPosition = "center";
 }
 
-// Evento de submissão do formulário
 form.addEventListener("submit", (event) => {
     event.preventDefault();
     const cidade = cidadeInput.value.trim();
