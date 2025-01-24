@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <script defer src="/javascript/script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Weather Global Controller</title>
+</head>
+
+<body>
+    <main class="container">
+        <header>
+            <h1>Weather Global Controller</h1>
+        </header>
+
+        <section class="search-section">
+            <form id="searchForm">
+                <div class="busca">
+                    <input type="text" name="cidade" id="cidade" placeholder="Digite o nome da cidade"
+                        class="search-input" required>
+                    <button type="submit" class="search-button">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+                <ul id="suggestions" class="suggestions"></ul>
+            </form>
+        </section>
+
+
+
+        <section class="result-section">
+            <div class="cidade">
+                <h2 class="cidade-nome" id="cidadeNome">Nome da Cidade</h2>
+                <p class="detalhes" id="descricao">Descrição do clima</p>
+                <div class="info">
+                    <p class="cidade-temperatura">
+                        <i class="fas fa-temperature-high"></i> <span id="cidadeTemperatura">--°C</span>
+                    </p>
+                    <p class="cidade-vento">
+                        <i class="fas fa-wind"></i> <span id="cidadeVento">-- m/s</span>
+                    </p>
+                    <p class="cidade-umidade">
+                        <i class="fas fa-tint"></i> <span id="cidadeUmidade">--%</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
