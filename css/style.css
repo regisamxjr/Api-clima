@@ -29,11 +29,24 @@ body {
     text-align: center;
 }
 
-header h1 {
+.titulo {
+    text-decoration: none; 
     font-size: 2rem;
-    color: #ffffff  ;
-    margin-bottom: 20px;
+    font-weight: bold; 
+    color: #00a8e8; 
+    transition: color 0.3s ease, transform 0.3s ease; 
 }
+
+.titulo:hover {
+    color: #0e3655; 
+    transform: scale(1.05); 
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+}
+
+.titulo:active {
+    color: #003865; 
+}
+
 
 .search-section {
     margin-bottom: 20px;
