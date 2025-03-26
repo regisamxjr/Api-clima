@@ -123,13 +123,24 @@ body {
     align-items: center;
     font-size: 1.1rem;
     margin: 10px 0;
-    color: #00a8e8;
+    color: #4c4444;
 }
 
 .info i {
     margin-right: 10px;
-    color: #00a8e8;
     font-size: 1.3rem;
+}
+
+.cidade-temperatura i {
+    color: #000000;
+}
+
+.cidade-vento i {
+    color: #808080;
+}
+
+.cidade-umidade i {
+    color: #0000FF;
 }
 
 .cidade-temperatura span,
