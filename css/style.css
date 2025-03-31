@@ -123,28 +123,131 @@ body {
     align-items: center;
     font-size: 1.1rem;
     margin: 10px 0;
-    color: #4c4444;
+    color: #00a8e8;
 }
 
 .info i {
     margin-right: 10px;
+    color: #00a8e8;
     font-size: 1.3rem;
-}
-
-.cidade-temperatura i {
-    color: #000000;
-}
-
-.cidade-vento i {
-    color: #808080;
-}
-
-.cidade-umidade i {
-    color: #0000FF;
 }
 
 .cidade-temperatura span,
 .cidade-vento span,
 .cidade-umidade span {
     font-weight: bold;
+}
+
+.cidade-header {
+    margin-bottom: 20px;
+}
+
+.info-principal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+    padding: 15px;
+    background: rgba(0, 168, 232, 0.1);
+    border-radius: 10px;
+}
+
+.temperatura-principal {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.temperatura-principal span:first-child {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #003459;
+}
+
+.temperatura-minmax {
+    display: flex;
+    gap: 15px;
+    margin-top: 5px;
+    font-size: 1.1rem;
+    color: #007ea7;
+}
+
+.icone-clima img {
+    width: 80px;
+    height: 80px;
+}
+
+.info-detalhes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    transition: transform 0.2s;
+}
+
+.info-item:hover {
+    transform: translateY(-2px);
+}
+
+.info-item i {
+    font-size: 1.5rem;
+    color: #00a8e8;
+}
+
+.info-texto {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.info-texto .label {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.info-texto span:last-child {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #003459;
+}
+
+.previsao-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.previsao-card {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.previsao-card:hover {
+    transform: translateY(-5px);
+}
+
+.previsao-card h3 {
+    color: #003459;
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+.previsao-card .info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }

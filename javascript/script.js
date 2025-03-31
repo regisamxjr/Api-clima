@@ -11,28 +11,44 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector(".result-section").appendChild(mensagemErro);
 });
 
-function colocarNaTela(dados) {
-    console.log(dados);
-    document.querySelector("#cidadeNome").textContent = dados.name;
-    document.querySelector("#descricao").textContent = dados.weather[0].description;
-    document.querySelector("#cidadeTemperatura").textContent = "Temperatura: " + Math.floor(dados.main.temp) + "°C";
-    document.querySelector("#cidadeVento").textContent = "Vento: " + dados.wind.speed + " m/s";
-    document.querySelector("#cidadeUmidade").textContent = "Umidade: " + dados.main.humidity + "%";
+function colocarNaTela(dadosAtual, dadosPrevisao) {
+    console.log(dadosAtual, dadosPrevisao);
+    document.querySelector("#cidadeNome").textContent = dadosAtual.name;
+    document.querySelector("#descricao").textContent = dadosAtual.weather[0].description;
+    document.querySelector("#cidadeTemperatura").textContent = Math.floor(dadosAtual.main.temp) + "°C";
+    document.querySelector("#cidadeVento").textContent = dadosAtual.wind.speed + " m/s";
+    document.querySelector("#cidadeUmidade").textContent = dadosAtual.main.humidity + "%";
+    
+    const amanha = dadosPrevisao.list[8]; // Aproximadamente 24h depois
+    document.querySelector("#amanhaTempMax").textContent = Math.floor(amanha.main.temp) + "°C";
+    document.querySelector("#amanhaVento").textContent = amanha.wind.speed + " m/s";
+    document.querySelector("#amanhaUmidade").textContent = amanha.main.humidity + "%";
+    
     document.querySelector("#mensagemErro").style.display = "none";
     
-    alterarFundo(dados.weather[0].main);
+    alterarFundo(dadosAtual.weather[0].main);
 }
 
 async function buscarCidade(cidade) {
     try {
-        let resposta = await fetch(
+        // Buscar clima atual
+        let respostaAtual = await fetch(
             `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&appid=${chave}&lang=pt_br&units=metric`
         );
-        if (!resposta.ok) {
+        
+        if (!respostaAtual.ok) {
             throw new Error("Cidade não encontrada");
         }
-        let dados = await resposta.json();
-        colocarNaTela(dados);
+        
+        // Buscar previsão para amanhã
+        let respostaPrevisao = await fetch(
+            `https://api.openweathermap.org/data/2.5/forecast?q=${cidade}&appid=${chave}&lang=pt_br&units=metric`
+        );
+        
+        let dadosAtual = await respostaAtual.json();
+        let dadosPrevisao = await respostaPrevisao.json();
+        
+        colocarNaTela(dadosAtual, dadosPrevisao);
     } catch (erro) {
         mostrarErro("Cidade não encontrada. Tente novamente.");
     }
@@ -54,7 +70,8 @@ function alterarFundo(clima) {
         Thunderstorm: "url('/img/chuva.jpg')",
         Drizzle: "url('/img/chuva.jpg')",
         Mist: "url('/img/nevoa.jpg')", 
-        Fog: "url('/img/nublado.jpg')", 
+        Fog: "url('/img/nevoa.jpg')",
+        Haze: "url('/img/nevoa.jpg')"
     };
 
     corpo.style.backgroundImage = fundos[clima] || "url('https://source.unsplash.com/1600x900/?weather')";
@@ -67,4 +84,15 @@ document.querySelector("#searchForm").addEventListener("submit", function (event
     event.preventDefault();
     let cidade = document.querySelector("#cidade").value;
     buscarCidade(cidade);
+});
+
+document.querySelector("#clearButton").addEventListener("click", function() {
+    document.querySelector("#cidade").value = "";
+    document.querySelector("#cidadeNome").textContent = "Nome da Cidade";
+    document.querySelector("#descricao").textContent = "Descrição do clima";
+    document.querySelector("#cidadeTemperatura").textContent = "--°C";
+    document.querySelector("#cidadeVento").textContent = "-- m/s";
+    document.querySelector("#cidadeUmidade").textContent = "--%";
+    document.querySelector("#mensagemErro").style.display = "none";
+    document.body.style.backgroundImage = "url('/img/padrao.jpg')";
 });
