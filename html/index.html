@@ -26,6 +26,9 @@
                     <button type="submit" class="search-button">
                         <i class="fa fa-search"></i>
                     </button>
+                    <button type="button" class="clear-button" id="clearButton">
+                        <i class="fa-solid fa-delete-left"></i>
+                    </button>
                 </div>
                 <ul id="suggestions" class="suggestions"></ul>
             </form>
@@ -35,11 +38,11 @@
             <div class="cidade">
                 <h2 class="cidade-nome" id="cidadeNome">Nome da Cidade</h2>
                 <p class="detalhes" id="descricao">Descrição do clima</p>
-                
-                <div class="previsao-container">
+                <div class="previsao-container" style="display: none;" id="previsaoContainer">
                     <!-- Hoje -->
                     <div class="previsao-card hoje">
-                        <h3>Hoje</h3>
+                        <h3 class="data-numero" id="dataHoje">21</h3>
+                        <p class="dia-semana" id="diaSemanaHoje">Segunda</p>
                         <div class="info">
                             <p class="cidade-temperatura">
                                 <i class="fas fa-temperature-high"></i> <span id="cidadeTemperatura">--°C</span>
@@ -55,7 +58,8 @@
                     
                     <!-- Amanhã -->
                     <div class="previsao-card amanha">
-                        <h3>Amanhã</h3>
+                        <h3 class="data-numero" id="dataAmanha">22</h3>
+                        <p class="dia-semana" id="diaSemanaAmanha">Terça</p>
                         <div class="info">
                             <p class="cidade-temperatura">
                                 <i class="fas fa-temperature-high"></i> <span id="amanhaTempMax">--°C</span>
@@ -68,10 +72,31 @@
                             </p>
                         </div>
                     </div>
-                </div>
+                
+                    <!-- Depois de Amanhã -->
+                    <div class="previsao-card depois-amanha">
+                        <h3 class="data-numero" id="dataDepoisAmanha">23</h3>
+                        <p class="dia-semana" id="diaSemanaDepoisAmanha">Quarta</p>
+                        <div class="info">
+                            <p class="cidade-temperatura">
+                                <i class="fas fa-temperature-high"></i> <span id="depoisAmanhaTempMax">--°C</span>
+                            </p>
+                            <p class="cidade-vento">
+                                <i class="fas fa-wind"></i> <span id="depoisAmanhaVento">-- m/s</span>
+                            </p>
+                            <p class="cidade-umidade">
+                                <i class="fas fa-droplet"></i> <span id="depoisAmanhaUmidade">--%</span>
+                            </p>
+                        </div>
+                    </div>
+                </div> 
             </div>
         </section>
     </main>
+    <div class="footer-brand">
+        <img src="/img/logo.png" alt="WGC Logo" class="footer-logo">
+        <span class="footer-text">WGC</span>
+    </div>
 </body>
 
 </html>

@@ -12,17 +12,46 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function colocarNaTela(dadosAtual, dadosPrevisao) {
-    console.log(dadosAtual, dadosPrevisao);
+    // Mostrar a seção de resultados
+    document.querySelector(".result-section").style.display = "block";
+    
+    // Mostrar o container de previsão
+    document.querySelector("#previsaoContainer").style.display = "flex";
+    
+    // Atualizar as datas
+    const datas = obterDatas();
+    
+    // Atualizar números e dias da semana
+    document.querySelector("#dataHoje").textContent = datas.dataHoje.data;
+    document.querySelector("#diaSemanaHoje").textContent = datas.dataHoje.diaSemana;
+    
+    document.querySelector("#dataAmanha").textContent = datas.dataAmanha.data;
+    document.querySelector("#diaSemanaAmanha").textContent = datas.dataAmanha.diaSemana;
+    
+    document.querySelector("#dataDepoisAmanha").textContent = datas.dataDepoisDeAmanha.data;
+    document.querySelector("#diaSemanaDepoisAmanha").textContent = datas.dataDepoisDeAmanha.diaSemana;
+    
+    // Mostrar nome da cidade e descrição
+    document.querySelector(".cidade-nome").style.display = "block";
+    document.querySelector(".detalhes").style.display = "block";
     document.querySelector("#cidadeNome").textContent = dadosAtual.name;
     document.querySelector("#descricao").textContent = dadosAtual.weather[0].description;
+    
+    // Atualizar temperaturas e dados meteorológicos
     document.querySelector("#cidadeTemperatura").textContent = Math.floor(dadosAtual.main.temp) + "°C";
     document.querySelector("#cidadeVento").textContent = dadosAtual.wind.speed + " m/s";
     document.querySelector("#cidadeUmidade").textContent = dadosAtual.main.humidity + "%";
     
-    const amanha = dadosPrevisao.list[8]; // Aproximadamente 24h depois
+    const amanha = dadosPrevisao.list[8];
+    const depoisDeAmanha = dadosPrevisao.list[16];
+    
     document.querySelector("#amanhaTempMax").textContent = Math.floor(amanha.main.temp) + "°C";
     document.querySelector("#amanhaVento").textContent = amanha.wind.speed + " m/s";
     document.querySelector("#amanhaUmidade").textContent = amanha.main.humidity + "%";
+    
+    document.querySelector("#depoisAmanhaTempMax").textContent = Math.floor(depoisDeAmanha.main.temp) + "°C";
+    document.querySelector("#depoisAmanhaVento").textContent = depoisDeAmanha.wind.speed + " m/s";
+    document.querySelector("#depoisAmanhaUmidade").textContent = depoisDeAmanha.main.humidity + "%";
     
     document.querySelector("#mensagemErro").style.display = "none";
     
@@ -87,12 +116,16 @@ document.querySelector("#searchForm").addEventListener("submit", function (event
 });
 
 document.querySelector("#clearButton").addEventListener("click", function() {
+    // Limpar apenas o valor do input
     document.querySelector("#cidade").value = "";
-    document.querySelector("#cidadeNome").textContent = "Nome da Cidade";
-    document.querySelector("#descricao").textContent = "Descrição do clima";
-    document.querySelector("#cidadeTemperatura").textContent = "--°C";
-    document.querySelector("#cidadeVento").textContent = "-- m/s";
-    document.querySelector("#cidadeUmidade").textContent = "--%";
-    document.querySelector("#mensagemErro").style.display = "none";
-    document.body.style.backgroundImage = "url('/img/padrao.jpg')";
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Esconder a seção de resultados inicialmente
+    document.querySelector(".result-section").style.display = "none";
+    
+    // Adicionar evento de clique no footer-brand
+    document.querySelector(".footer-brand").addEventListener("click", function() {
+        location.reload();
+    });
 });

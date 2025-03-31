@@ -20,9 +20,9 @@ body {
 }
 
 .container {
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(13, 27, 42, 0.8); /* #0D1B2A com transparência */
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(13, 27, 42, 0.3);
     max-width: 500px;
     width: 100%;
     padding: 20px;
@@ -33,14 +33,14 @@ body {
     text-decoration: none; 
     font-size: 2rem;
     font-weight: bold; 
-    color: #00a8e8; 
+    color: #ffffff; 
     transition: color 0.3s ease, transform 0.3s ease; 
 }
 
 .titulo:hover {
-    color: #0e3655; 
+    color: #a8d4ff; 
     transform: scale(1.05); 
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+    text-shadow: 0 2px 4px rgba(13, 27, 42, 0.4); 
 }
 
 .titulo:active {
@@ -56,12 +56,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(27, 38, 59, 0.9); /* #1B263B com transparência */
    
     border-radius: 30px;
     padding: 5px 10px;
     gap: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 4px rgba(13, 27, 42, 0.2);
 }
 
 .search-input {
@@ -71,11 +71,13 @@ body {
     padding: 10px 15px;
     flex: 1;
     border-radius: 20px;
+    background-color: #E0E1DD;
+    color: #0D1B2A;
 }
 
 .search-button {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: #415A77;
+    color: #E0E1DD;
     border: none;
     border-radius: 50%;
     width: 40px;
@@ -88,17 +90,36 @@ body {
 }
 
 .search-button:hover {
-    background-color: #676767;
+    background-color: #244960;
 }
 
+.clear-button {
+    background-color: #415A77;
+    color: #E0E1DD;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.clear-button:hover {
+    background-color: #244960;
+    color: #ffffff;
+}
 
 .result-section {
-    background: #ffffff;
+    background: rgb(255, 255, 255); /* #E0E1DD com transparência */
     border-radius: 10px;
     padding: 20px;
     box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.1);
-    border: 1px solid #ddd;
+    border: 1px solid rgba(221, 221, 221, 0.5);
     margin-top: 20px;
+    display: none;
 }
 
 .cidade {
@@ -106,16 +127,11 @@ body {
 }
 
 .cidade-nome {
-    font-size: 1.8rem;
-    color: #003459;
-    margin-bottom: 10px;
-    font-weight: bold;
+    display: none;
 }
 
 .detalhes {
-    font-size: 1.2rem;
-    color: #007ea7;
-    margin-bottom: 15px;
+    display: none;
 }
 
 .info p {
@@ -229,7 +245,7 @@ body {
 
 .previsao-card {
     flex: 1;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgb(231, 245, 254);
     border-radius: 10px;
     padding: 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -250,4 +266,51 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+.data-numero {
+    font-size: 2rem;
+    color: #003459;
+    margin-bottom: 5px;
+}
+
+.dia-semana {
+    font-size: 1.2rem;
+    color: #007ea7;
+    margin-bottom: 15px;
+}
+
+.footer-brand {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(13, 27, 42, 0.8);
+    padding: 10px 20px;
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.footer-logo {
+    width: 30px;
+    height: 30px;
+    filter: brightness(0) invert(1);
+    color: #ffffff;
+}
+
+.footer-text {
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Adicionar hover effect */
+.footer-brand:hover {
+    transform: translateY(-2px);
+    transition: transform 0.3s ease;
+    background: rgba(13, 27, 42, 0.9);
 }
