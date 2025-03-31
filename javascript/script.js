@@ -1,5 +1,32 @@
 let chave = "46551cb2168b328d79639d4a9ae43c8c";
 
+// Objeto com as siglas dos países e seus nomes
+const paises = {
+    'BR': 'Brasil',
+    'US': 'Estados Unidos',
+    'JP': 'Japão',
+    'GB': 'Reino Unido',
+    'FR': 'França',
+    'DE': 'Alemanha',
+    'IT': 'Itália',
+    'PT': 'Portugal',
+    'ES': 'Espanha',
+    'AR': 'Argentina',
+    'UY': 'Uruguai',
+    'PY': 'Paraguai',
+    'CL': 'Chile',
+    'PE': 'Peru',
+    'CO': 'Colômbia',
+    'MX': 'México',
+    'CA': 'Canadá',
+    'CN': 'China',
+    'KR': 'Coreia do Sul',
+    'RU': 'Rússia',
+    'AU': 'Austrália',
+    'NZ': 'Nova Zelândia',
+    // Adicione mais países conforme necessário
+};
+
 document.addEventListener("DOMContentLoaded", function () {
     const mensagemErro = document.createElement("p");
     mensagemErro.id = "mensagemErro";
@@ -31,10 +58,16 @@ function colocarNaTela(dadosAtual, dadosPrevisao) {
     document.querySelector("#dataDepoisAmanha").textContent = datas.dataDepoisDeAmanha.data;
     document.querySelector("#diaSemanaDepoisAmanha").textContent = datas.dataDepoisDeAmanha.diaSemana;
     
-    // Mostrar nome da cidade e descrição
+    // Mostrar nome da cidade e país
     document.querySelector(".cidade-nome").style.display = "block";
     document.querySelector(".detalhes").style.display = "block";
-    document.querySelector("#cidadeNome").textContent = dadosAtual.name;
+    
+    // Pegar o código do país e buscar o nome completo
+    const codigoPais = dadosAtual.sys.country;
+    const nomePais = paises[codigoPais] || codigoPais; // Usa o código se não encontrar o nome
+    
+    // Exibir cidade e país
+    document.querySelector("#cidadeNome").textContent = `${dadosAtual.name}, ${nomePais} (${codigoPais})`;
     document.querySelector("#descricao").textContent = dadosAtual.weather[0].description;
     
     // Atualizar temperaturas e dados meteorológicos
